@@ -1,6 +1,18 @@
 # sudoku
 A sudoku game utilizing RaylibC
 
+## building
+The program can be built and ran by installing raylib, cmake, and make
+
+commands
+
+- mkdir build
+- cd build
+- cmake ..
+- make
+- ./Sudoku
+
+
 ## goal
 - Experience creating a basic game engine by utilizing [RaylibC](https://www.raylib.com/), A graphics library that utilizes OpenGL, to create a sudoku game.  
 - utilize [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possibilities of branch misprediction.  
