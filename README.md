@@ -5,7 +5,7 @@ A sudoku game utilizing RaylibC
 - Experience creating a basic game engine by utilizing [RaylibC](https://www.raylib.com/), A graphics library that utilizies OpenGL, to create a sudoku game.  
 - [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possiblities of branch misprediction.  
 - Follow object oriented principals allowing for ease of development and code reusability.
-- strictly utilize the [c++ memory libray](https://cplusplus.com/reference/memory/) to properly handle memory management without fear of memory leaks.
+- strictly utilize the [c++ memory library](https://cplusplus.com/reference/memory/) to properly handle memory management without fear of memory leaks.
 
 ## features
 - Notes mode, allowing for users to keep track of possibilities for each individual square.  
