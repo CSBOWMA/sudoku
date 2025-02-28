@@ -2,17 +2,17 @@
 A sudoku game utilizing RaylibC
 
 ## goal
-- Experience creating a basic game engine by utilizing [RaylibC](https://www.raylib.com/), A graphics library that utilizies OpenGL, to create a sudoku game.  
-- utilize [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possiblities of branch misprediction.  
-- Follow object oriented principals allowing for ease of development and code reusability.
+- Experience creating a basic game engine by utilizing [RaylibC](https://www.raylib.com/), A graphics library that utilizes OpenGL, to create a sudoku game.  
+- utilize [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possibilities of branch misprediction.  
+- Follow object oriented principles allowing for ease of development and code reusability.
 - strictly utilize the [c++ memory library](https://cplusplus.com/reference/memory/) to properly handle memory management without fear of memory leaks.
 
 ## features
 - Notes mode, allowing for users to keep track of possibilities for each individual square.  
 - Autonotes button, if the user wants to program to quickly write out the obvious notes.  
 - Collision highlighting, allowing for easy identification of where the user went wrong.  
-- Timer allowing for user to keep track of the amount of time spent on a board.  
-- Highlighting of currently selected square, column set, row set, and square set.  
+- Timer, allowing for user to keep track of the amount of time spent on a board.  
+- Highlighting of the currently selected square, column set, row set, and square set.  
 - Preset squares are darkened showing what the user may not modify.  
 
 ## optimization
@@ -20,9 +20,9 @@ A sudoku game utilizing RaylibC
 - [Bit Field](https://en.wikipedia.org/wiki/Bit_field) In the game scene I have both 81 Tiles, a class representing the value in a spot, and 81 notes, a note representing all possible integer values for a spot ie 1 through 9.  
   - Normally each tile would have to keep track of not only the integer stored but also a boolean value representing if the tile is preset. If I were to use the standard data types an int and a bool on a modern device, each tile would take up 5 bytes, for a total 405 bytes for all tiles. Since I only need a tile to represent a value between 0 and 9, I was able to instead use an uint8_t, or an 8 bit unsigned integer. As such with only an uint_8, and a bool I could reduce the total amount of bytes for tiles down to 162 bytes, so more than half the amount of storage. I furthered this as you only need the first seven bits to represent the value of the tile as either an integer value 0 through 9 or a char value 0 through 9. As such I could use the 8th bit to represent if the tile was preset. This cut the required amount of storage in half now only requiring one byte per tile instead of two.
 
-  - Each note traditionally would be represented by 9 bool values, each representing if the note is on or off for a value. This would cause each struct to be atleast the size of 9 bytes, meaning that the entirety of the notes would take up atleast 729 bytes. I instead decided to use an uint16_t, or a 16 bit unsigned integer, and bit manipulation to store all the notes of a spot in only two bytes. Thus reducing the memory usage from 729 bytes down to 162 bytes, reducing it down to less than a quarter the amount of required storage. The tradeoff to this is of course readablility of the code, but by utilizing abstraction one can easily use the class with just standard values. Although it costs more cycles to modify an individual vlaue of the notes, access times are nearly equivelant due to ability to simply return the entirety of a note by just returning one int, allowing for the user to use bit masks to obtain what values they want.  
+  - Each note traditionally would be represented by 9 bool values, each representing if the note is on or off for a value. This would cause each struct to be at least the size of 9 bytes, meaning that the entirety of the notes would take up at least 729 bytes. I instead decided to use an uint16_t, or a 16 bit unsigned integer, and bit manipulation to store all the notes of a spot in only two bytes. Thus reducing the memory usage from 729 bytes down to 162 bytes, reducing it down to less than a quarter the amount of required storage. The tradeoff to this is readability of the code, but by utilizing abstraction one can easily use the class with just standard values. Although it costs more cycles to modify an individual value of the notes, access times are nearly equivelant due to ability to simply return the entirety of a note by just returning one int, allowing for the user to use bit masks to obtain what values they want.  
 
-- Reduce expensive code calls, The most expensive algorithm in the code is auto-notes algorithm and the collisions algorithm. These algorithms only need to be ran when the board is updated, or when a tile is set. Instead of updating the collisions list and notes every time the main game loop executes, it instead checks if the board has been updated by utlizing the return value calculated returned by the Sudoku class method setTile representing if a tile was updated or not.
+- Reduce expensive code calls, The most expensive algorithm in the code is auto-notes algorithm and the collisions algorithm. These algorithms only need to be ran when the board is updated, or when a tile is set. Instead of updating the collisions list and notes every time the main game loop executes, it instead checks if the board has been updated by utilizing the return value calculated returned by the Sudoku class method setTile representing if a tile was updated or not.
 
 ## challenges
 
