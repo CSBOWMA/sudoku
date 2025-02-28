@@ -3,7 +3,7 @@ A sudoku game utilizing RaylibC
 
 ## goal
 - Experience creating a basic game engine by utilizing [RaylibC](https://www.raylib.com/), A graphics library that utilizies OpenGL, to create a sudoku game.  
-- [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possiblities of branch misprediction.  
+- utilize [branchless optimization](https://en.algorithmica.org/hpc/pipelining/branchless/), a programming technique that prevents the possiblities of branch misprediction.  
 - Follow object oriented principals allowing for ease of development and code reusability.
 - strictly utilize the [c++ memory library](https://cplusplus.com/reference/memory/) to properly handle memory management without fear of memory leaks.
 
@@ -12,7 +12,7 @@ A sudoku game utilizing RaylibC
 - Autonotes button, if the user wants to program to quickly write out the obvious notes.  
 - Collision highlighting, allowing for easy identification of where the user went wrong.  
 - Timer allowing for user to keep track of the amount of time spent on a board.  
-- Hilighting of currently selected square, column set, row set, and square set.  
+- Highlighting of currently selected square, column set, row set, and square set.  
 - Preset squares are darkened showing what the user may not modify.  
 
 ## optimization
